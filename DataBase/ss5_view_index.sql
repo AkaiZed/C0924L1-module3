@@ -50,3 +50,61 @@ SET
 WHERE
     product_code % 3 = 0; 
     drop view product_infor;
+
+DELIMITER //
+CREATE PROCEDURE GetAllProducts()
+BEGIN
+    SELECT * FROM products;
+END //
+DELIMITER ;
+CALL GetAllProducts();
+
+DELIMITER //
+CREATE PROCEDURE AddProduct(
+    IN p_product_code INT,
+    IN p_product_name VARCHAR(100),
+    IN p_product_price DECIMAL(10,2),
+    IN p_product_amount DECIMAL(8,2),
+    IN p_product_description VARCHAR(255),
+    IN p_product_status INT
+)
+BEGIN
+    INSERT INTO products (product_code, product_name, product_price, product_amount, product_description, product_status)
+    VALUES (p_product_code, p_product_name, p_product_price, p_product_amount, p_product_description, p_product_status);
+END //
+DELIMITER ;
+CALL AddProduct(109, 'Tablet', 499.99, 15.00, 'High-resolution tablet for work and play', 1);
+
+DELIMITER //
+CREATE PROCEDURE UpdateProductById(
+    IN p_id INT,
+    IN p_product_code INT,
+    IN p_product_name VARCHAR(100),
+    IN p_product_price DECIMAL(10,2),
+    IN p_product_amount DECIMAL(8,2),
+    IN p_product_description VARCHAR(255),
+    IN p_product_status INT
+)
+BEGIN
+    UPDATE products
+    SET 
+        product_code = p_product_code,
+        product_name = p_product_name,
+        product_price = p_product_price,
+        product_amount = p_product_amount,
+        product_description = p_product_description,
+        product_status = p_product_status
+    WHERE id = p_id;
+END //
+DELIMITER ;
+CALL UpdateProductById(1, 101, 'Laptop Pro', 1099.99, 5.00, 'Upgraded gaming laptop', 1);
+
+DELIMITER //
+CREATE PROCEDURE DeleteProductById(
+    IN p_id INT
+)
+BEGIN
+    DELETE FROM products WHERE id = p_id;
+END //
+DELIMITER ;
+CALL DeleteProductById(1);
