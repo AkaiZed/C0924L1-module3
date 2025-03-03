@@ -1,0 +1,33 @@
+.header {
+    background-color: black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5%;
+}
+
+.header div a {
+    color: white;
+    text-decoration: none;
+}
+
+.menu {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+}
+
+.container a {
+    width: 20%;   
+}
+.container .text {
+    width: 40%;
+}
+.container.ads {
+    width: 20%;
+}
