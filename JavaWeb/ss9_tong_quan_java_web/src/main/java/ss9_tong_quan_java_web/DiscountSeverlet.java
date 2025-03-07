@@ -1,4 +1,4 @@
-package com.example.ss9_tong_quan_java_web;
+package ss9_tong_quan_java_web;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
