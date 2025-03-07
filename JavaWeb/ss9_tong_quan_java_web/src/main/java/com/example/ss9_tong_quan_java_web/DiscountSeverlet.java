@@ -1,4 +1,4 @@
-package ss9_tong_quan_java_web;
+package com.example.ss9_tong_quan_java_web;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebServlet(name = "DiscountSeverlet", value = "/sum")
+
 public class DiscountSeverlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
