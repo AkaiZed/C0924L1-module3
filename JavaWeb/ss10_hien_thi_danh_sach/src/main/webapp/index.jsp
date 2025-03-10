@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<a href="/customer">Hiển thị</a>
 <h2>Danh sách khách hàng</h2>
 <table>
     <thead>
