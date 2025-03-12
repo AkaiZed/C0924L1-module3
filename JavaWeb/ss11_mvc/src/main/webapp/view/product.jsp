@@ -10,7 +10,9 @@
 <body>
 <h1>Danh sách sản phẩm</h1>
 <div class="actions">
-    <a href="/products?action=add"><button class="btn add-btn">Thêm mới sản phẩm</button></a>
+    <a href="/products?action=add">
+        <button class="btn add-btn">Thêm mới sản phẩm</button>
+    </a>
 </div>
 <table>
     <thead>
@@ -29,10 +31,16 @@
             <td>${product.name}</td>
             <td>${product.price}</td>
             <td>${product.count}</td>
-            <td class="actions">
-                <button class="btn edit-btn">Sửa</button>
-                <button class="btn delete-btn">Xóa</button>
-                <button class="btn view-btn">Xem thêm</button>
+            <td class="action-buttons">
+                <a href="/products?action=edit&id=${product.id}">
+                    <button class="btn edit-btn">Sửa</button>
+                </a>
+                <a href="/products?action=delete&id=${product.id}">
+                    <button class="btn delete-btn">Xóa</button>
+                </a>
+                <a href="/products?action=details&id=${product.id}">
+                    <button class="btn view-btn">Xem thêm</button>
+                </a>
             </td>
         </tr>
     </c:forEach>

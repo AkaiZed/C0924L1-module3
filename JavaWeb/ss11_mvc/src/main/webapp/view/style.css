@@ -1,27 +1,35 @@
-/* style.css */
 body {
     font-family: Arial, sans-serif;
     text-align: center;
     margin: 0;
-    padding: 20px;
-    background-color: #f4f4f4;
+    padding: 30px;
+    background-color: #f7f7f7;
 }
 
 h1 {
     color: #333;
-    padding-top: 20px;
-    font-size: 2em;
+    font-size: 2.5em;
+    margin-bottom: 30px;
+    font-weight: bold;
+}
+
+.actions {
     margin-bottom: 20px;
 }
 
 .btn {
     padding: 10px 20px;
-    margin: 5px;
     cursor: pointer;
     border: none;
     border-radius: 5px;
     font-size: 14px;
-    transition: background-color 0.3s ease;
+    font-weight: 500;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+    display: inline-block;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
 }
 
 .add-btn {
@@ -46,7 +54,7 @@ h1 {
     background-color: #FFA500;
     color: white;
     font-size: 12px;
-    padding: 8px 15px;
+    padding: 6px 12px;
 }
 
 .edit-btn:hover {
@@ -57,7 +65,7 @@ h1 {
     background-color: #f44336;
     color: white;
     font-size: 12px;
-    padding: 8px 15px;
+    padding: 6px 12px;
 }
 
 .delete-btn:hover {
@@ -65,15 +73,17 @@ h1 {
 }
 
 table {
-    width: 80%;
-    margin: 20px auto;
+    width: 90%;
+    margin: 0 auto;
     border-collapse: collapse;
     background-color: #fff;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
 }
 
 th, td {
-    padding: 15px;
+    padding: 15px 20px;
     text-align: center;
     border: 1px solid #ddd;
 }
@@ -82,6 +92,12 @@ th {
     background-color: #f2f2f2;
     font-weight: bold;
     color: #333;
+    font-size: 16px;
+}
+
+td {
+    font-size: 14px;
+    color: #555;
 }
 
 tr:nth-child(even) {
@@ -92,39 +108,45 @@ tr:hover {
     background-color: #f1f1f1;
 }
 
-.actions {
+.action-buttons {
     display: flex;
     justify-content: center;
     gap: 10px;
-    margin-bottom: 20px;
+    flex-wrap: wrap;
 }
 
-.actions button {
-    margin-right: 0;
+.action-buttons a {
+    text-decoration: none;
+}
+
+.action-buttons .btn {
+    font-size: 12px;
+    padding: 6px 12px;
+    min-width: 80px;
 }
 
 /* Form Styling */
 form {
-    width: 50%;
+    width: 60%;
     margin: 20px auto;
-    padding: 20px;
+    padding: 30px;
     background-color: #fff;
     border-radius: 8px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 label {
     font-weight: bold;
     color: #333;
     display: block;
+    margin-bottom: 8px;
     text-align: left;
-    margin-bottom: 5px;
 }
 
 input {
     width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
+    padding: 12px;
+    margin-bottom: 20px;
     border: 1px solid #ddd;
     border-radius: 4px;
     box-sizing: border-box;
@@ -137,6 +159,7 @@ input:focus {
     box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
 }
 
+/* Responsive Design */
 @media (max-width: 768px) {
     table {
         width: 100%;
@@ -144,7 +167,7 @@ input:focus {
     }
 
     th, td {
-        padding: 10px;
+        padding: 12px;
     }
 
     .btn {
@@ -152,9 +175,14 @@ input:focus {
         padding: 8px 16px;
     }
 
-    .edit-btn, .delete-btn {
+    .action-buttons .btn {
         font-size: 10px;
-        padding: 6px 12px;
+        padding: 5px 10px;
+        min-width: 60px;
+    }
+
+    .action-buttons {
+        gap: 8px;
     }
 
     form {

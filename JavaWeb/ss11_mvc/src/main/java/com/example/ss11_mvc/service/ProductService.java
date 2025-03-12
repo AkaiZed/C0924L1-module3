@@ -7,6 +7,7 @@ import java.util.List;
 
 public class ProductService {
     private static final List<Product> products = new ArrayList<Product>();
+
     static {
         products.add(new Product(1, "iPhone 16 Pro Max", 1199.99, 50));
         products.add(new Product(2, "Samsung Galaxy S25 Ultra", 1299.99, 45));
@@ -19,7 +20,25 @@ public class ProductService {
         products.add(new Product(9, "Nothing Phone 2", 599.99, 80));
         products.add(new Product(10, "Motorola Edge 50 Pro", 649.99, 55));
     }
+
     public static List<Product> getProducts() {
         return products;
+    }
+
+    public static void removeProductById(int id) {
+        products.removeIf(product -> product.getId() == id);
+    }
+
+    public static Product findById(int id) {
+        return products.stream().filter(p -> p.getId() == id).findFirst().orElse(null);
+    }
+
+    public static void update(int id, Product updatedProduct) {
+        for (int i = 0; i < products.size(); i++) {
+            if (products.get(i).getId() == id) {
+                products.set(i, updatedProduct);
+                break;
+            }
+        }
     }
 }
