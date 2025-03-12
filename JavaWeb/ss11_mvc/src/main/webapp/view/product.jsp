@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hiển thị sản phẩm</title>
-    <link rel="stylesheet" href="style.css">
+<%--    <link rel="stylesheet" href="style.css">--%>
 </head>
 <body>
 <h1>Danh sách sản phẩm</h1>
@@ -38,9 +38,9 @@
                 <a href="/products?action=delete&id=${product.id}">
                     <button class="btn delete-btn">Xóa</button>
                 </a>
-                <a href="/products?action=details&id=${product.id}">
-                    <button class="btn view-btn">Xem thêm</button>
-                </a>
+<%--                <a href="/products?action=details&id=${product.id}">--%>
+<%--                    <button class="btn view-btn">Xem thêm</button>--%>
+<%--                </a>--%>
             </td>
         </tr>
     </c:forEach>

@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>Thêm mới sản phẩm</title>
-    <link rel="stylesheet" href="style.css">
+<%--    <link rel="stylesheet" href="style.css">--%>
 </head>
 <body>
 <h1>Thêm mới sản phẩm</h1>
