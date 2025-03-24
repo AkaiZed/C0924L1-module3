@@ -10,7 +10,7 @@
 <body>
 <div class="signup-container">
     <h2>Đăng ký tài khoản</h2>
-    <form id="signupForm" action="${pageContext.request.contextPath}/NguoiDungServlet" method="post">
+    <form id="signupForm" action="${pageContext.request.contextPath}/CustomerController" method="post">
         <input type="hidden" name="action" value="signup">
         <div class="input-group">
             <label for="username">Tên đăng nhập</label>
@@ -41,7 +41,7 @@
         <button type="submit" class="signup-btn">Đăng ký</button>
     </form>
     <div class="login-link">
-        <a href="${pageContext.request.contextPath}/NguoiDungServlet?action=login">Quay lại đăng nhập</a>
+        <a href="${pageContext.request.contextPath}/CustomerController?action=login">Quay lại đăng nhập</a>
     </div>
 </div>
 </body>

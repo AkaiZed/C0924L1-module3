@@ -6,6 +6,6 @@
 </head>
 <body>
 <%--<a href="Login.jsp">Start</a>--%>
-<c:redirect url="/NguoiDungServlet"/>
+<c:redirect url="/CustomerController"/>
 </body>
 </html>

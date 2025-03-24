@@ -2,7 +2,7 @@ package com.example.project_m3_team4.model;
 
 import java.util.Date;
 
-public class NguoiDung {
+public class Customer {
     private String taiKhoan;
     private String matKhau;
     private String email;
@@ -10,10 +10,10 @@ public class NguoiDung {
     private Date dob;
     private String diaChi;
 
-    public NguoiDung() {
+    public Customer() {
     }
 
-    public NguoiDung(String taiKhoan, String matKhau, String email, String soDt, Date dob, String diaChi) {
+    public Customer(String taiKhoan, String matKhau, String email, String soDt, Date dob, String diaChi) {
         this.taiKhoan = taiKhoan;
         this.matKhau = matKhau;
         this.email = email;

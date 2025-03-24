@@ -1,7 +1,7 @@
 package com.example.project_m3_team4.controller;
 
-import com.example.project_m3_team4.repository.NguoiDungRepository;
-import com.example.project_m3_team4.model.NguoiDung;
+import com.example.project_m3_team4.repository.CustomerRepository;
+import com.example.project_m3_team4.model.Customer;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,13 +13,13 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-@WebServlet(name = "NguoiDungServlet", value = "/NguoiDungServlet")
-public class NguoiDungServlet extends HttpServlet {
-    private NguoiDungRepository nguoiDungRepository;
+@WebServlet(name = "CustomerController", value = "/CustomerController")
+public class CustomerController extends HttpServlet {
+    private CustomerRepository customerRepository;
 
     @Override
     public void init() throws ServletException {
-        nguoiDungRepository = new NguoiDungRepository();
+        customerRepository = new CustomerRepository();
     }
 
     @Override
@@ -70,14 +70,14 @@ public class NguoiDungServlet extends HttpServlet {
             // Validate inputs
             if (taiKhoan == null || matKhau == null || soDt == null || dobStr == null) {
                 request.setAttribute("errorMessage", "Vui lòng điền đầy đủ thông tin bắt buộc.");
-                request.getRequestDispatcher("/view/SignUp.jsp").forward(request, response);
+                request.getRequestDispatcher("/SignUp.jsp").forward(request, response);
                 return;
             }
 
             // Check if username already exists
-            if (nguoiDungRepository.getNguoiDungByTaiKhoan(taiKhoan) != null) {
+            if (customerRepository.getNguoiDungByTaiKhoan(taiKhoan) != null) {
                 request.setAttribute("errorMessage", "Tên đăng nhập đã tồn tại. Vui lòng chọn tên khác.");
-                request.getRequestDispatcher("/view/SignUp.jsp").forward(request, response);
+                request.getRequestDispatcher("/SignUp.jsp").forward(request, response);
                 return;
             }
 
@@ -86,18 +86,18 @@ public class NguoiDungServlet extends HttpServlet {
             Date dob = dateFormat.parse(dobStr);
 
             // Create new user
-            NguoiDung nguoiDung = new NguoiDung(taiKhoan, matKhau, email, soDt, dob, diaChi);
-            boolean isAdded = nguoiDungRepository.addNguoiDung(nguoiDung);
+            Customer customer = new Customer(taiKhoan, matKhau, email, soDt, dob, diaChi);
+            boolean isAdded = customerRepository.addNguoiDung(customer);
 
             if (isAdded) {
-                response.sendRedirect(request.getContextPath() + "/NguoiDungServlet?action=login");
+                response.sendRedirect(request.getContextPath() + "/CustomerController?action=login");
             } else {
                 request.setAttribute("errorMessage", "Đăng ký thất bại. Vui lòng thử lại.");
                 request.getRequestDispatcher("/view/SignUp.jsp").forward(request, response);
             }
         } catch (Exception e) {
             request.setAttribute("errorMessage", "Dữ liệu không hợp lệ. Vui lòng kiểm tra lại.");
-            request.getRequestDispatcher("/view/SignUp.jsp").forward(request, response);
+            request.getRequestDispatcher("/SignUp.jsp").forward(request, response);
         }
     }
 
@@ -111,15 +111,15 @@ public class NguoiDungServlet extends HttpServlet {
             return;
         }
 
-        NguoiDung nguoiDung = nguoiDungRepository.getNguoiDungByTaiKhoan(taiKhoan);
-        if (nguoiDung != null && nguoiDung.getMatKhau().equals(matKhau)) {
+        Customer customer = customerRepository.getNguoiDungByTaiKhoan(taiKhoan);
+        if (customer != null && customer.getMatKhau().equals(matKhau)) {
             // Successful login
             HttpSession session = request.getSession();
-            session.setAttribute("nguoiDung", nguoiDung);
+            session.setAttribute("nguoiDung", customer);
             response.sendRedirect(request.getContextPath() + "/TeacherController"); // Redirect to teacher management page
         } else {
             request.setAttribute("errorMessage", "Tên đăng nhập hoặc mật khẩu không đúng.");
-            request.getRequestDispatcher("/view/Login.jsp").forward(request, response);
+            request.getRequestDispatcher("/Login.jsp").forward(request, response);
         }
     }
 }
