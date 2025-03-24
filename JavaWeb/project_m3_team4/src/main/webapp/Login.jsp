@@ -22,7 +22,7 @@
     </form>
     <div class="extra-links">
         <a href="SignUp.jsp">Đăng ký</a>
-        <a href="forgot-password.jsp">Quên mật khẩu?</a>
+        <a href="ForgotPassword.jsp">Quên mật khẩu?</a>
     </div>
 
     <c:if test="${not empty errorMessage}">

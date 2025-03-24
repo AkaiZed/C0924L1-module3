@@ -1,6 +1,6 @@
 package com.example.project_m3_team4.controller;
 
-import com.example.project_m3_team4.data.NguoiDungDAO;
+import com.example.project_m3_team4.repository.NguoiDungRepository;
 import com.example.project_m3_team4.model.NguoiDung;
 
 import javax.servlet.ServletException;
@@ -15,11 +15,11 @@ import java.util.Date;
 
 @WebServlet(name = "NguoiDungServlet", value = "/NguoiDungServlet")
 public class NguoiDungServlet extends HttpServlet {
-    private NguoiDungDAO nguoiDungDAO;
+    private NguoiDungRepository nguoiDungRepository;
 
     @Override
     public void init() throws ServletException {
-        nguoiDungDAO = new NguoiDungDAO();
+        nguoiDungRepository = new NguoiDungRepository();
     }
 
     @Override
@@ -31,11 +31,11 @@ public class NguoiDungServlet extends HttpServlet {
 
         switch (action) {
             case "signup":
-                request.getRequestDispatcher("/view/SignUp.jsp").forward(request, response);
+                request.getRequestDispatcher("/SignUp.jsp").forward(request, response);
                 break;
             case "login":
             default:
-                request.getRequestDispatcher("/view/Login.jsp").forward(request, response);
+                request.getRequestDispatcher("/Login.jsp").forward(request, response);
                 break;
         }
     }
@@ -75,7 +75,7 @@ public class NguoiDungServlet extends HttpServlet {
             }
 
             // Check if username already exists
-            if (nguoiDungDAO.getNguoiDungByTaiKhoan(taiKhoan) != null) {
+            if (nguoiDungRepository.getNguoiDungByTaiKhoan(taiKhoan) != null) {
                 request.setAttribute("errorMessage", "Tên đăng nhập đã tồn tại. Vui lòng chọn tên khác.");
                 request.getRequestDispatcher("/view/SignUp.jsp").forward(request, response);
                 return;
@@ -87,7 +87,7 @@ public class NguoiDungServlet extends HttpServlet {
 
             // Create new user
             NguoiDung nguoiDung = new NguoiDung(taiKhoan, matKhau, email, soDt, dob, diaChi);
-            boolean isAdded = nguoiDungDAO.addNguoiDung(nguoiDung);
+            boolean isAdded = nguoiDungRepository.addNguoiDung(nguoiDung);
 
             if (isAdded) {
                 response.sendRedirect(request.getContextPath() + "/NguoiDungServlet?action=login");
@@ -111,7 +111,7 @@ public class NguoiDungServlet extends HttpServlet {
             return;
         }
 
-        NguoiDung nguoiDung = nguoiDungDAO.getNguoiDungByTaiKhoan(taiKhoan);
+        NguoiDung nguoiDung = nguoiDungRepository.getNguoiDungByTaiKhoan(taiKhoan);
         if (nguoiDung != null && nguoiDung.getMatKhau().equals(matKhau)) {
             // Successful login
             HttpSession session = request.getSession();

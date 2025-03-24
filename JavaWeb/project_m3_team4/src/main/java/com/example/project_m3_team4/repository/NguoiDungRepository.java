@@ -1,12 +1,13 @@
-package com.example.project_m3_team4.data;
+package com.example.project_m3_team4.repository;
 
+import com.example.project_m3_team4.data.ConnectDB;
 import com.example.project_m3_team4.model.NguoiDung;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class NguoiDungDAO {
+public class NguoiDungRepository {
 
     public boolean addNguoiDung(NguoiDung nguoiDung) {
         String sql = "INSERT INTO nguoi_dung (tai_khoan, mat_khau, email, so_dt, dob, dia_chi) VALUES (?, ?, ?, ?, ?, ?)";

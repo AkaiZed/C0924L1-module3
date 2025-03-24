@@ -16,6 +16,7 @@
             <label for="username">Tên đăng nhập</label>
             <input class="input-field" id="username" name="username" type="text" placeholder="Nhập tên đăng nhập" required>
         </div>
+        <br>
         <div class="input-group">
             <label for="password">Mật khẩu</label>
             <input class="input-field" id="password" name="password" type="password" placeholder="Nhập mật khẩu" required>
