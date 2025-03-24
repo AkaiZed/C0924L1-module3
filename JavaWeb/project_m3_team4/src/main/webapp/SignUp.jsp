@@ -4,6 +4,7 @@
 <html>
 <head>
     <title>Đăng ký</title>
+    <link rel="stylesheet" href="/view/SignUpStyle.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/SignUpStyle.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
